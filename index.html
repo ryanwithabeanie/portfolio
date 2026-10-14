@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Portfolio of Raiyan Hossain Khan: computer science graduate with projects in AI, full-stack development and data analysis.">
+<title>Raiyan Hossain Khan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one calm column on a wide grid; the capability strip is the only loud moment, the rest stays quiet. */
+:root {
+  --bg: #F4F6F8;
+  --surface: #FFFFFF;
+  --fg: #12171D;
+  --muted: #56606C;
+  --line: #D9DEE4;
+  --accent: #0F6B66;
+  --accent-soft: #DDF0EE;
+  --on-accent: #FFFFFF;
+  --bar-base: #9AA5B1;
+  --font-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D1115;
+    --surface: #151B21;
+    --fg: #E8ECF0;
+    --muted: #98A3AF;
+    --line: #26303A;
+    --accent: #5FD0C5;
+    --accent-soft: #12302E;
+    --on-accent: #07201E;
+    --bar-base: #5B6773;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D1115;
+  --surface: #151B21;
+  --fg: #E8ECF0;
+  --muted: #98A3AF;
+  --line: #26303A;
+  --accent: #5FD0C5;
+  --accent-soft: #12302E;
+  --on-accent: #07201E;
+  --bar-base: #5B6773;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { color-scheme: light; }
+body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.1; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.wrap { max-width: 1040px; margin: 0 auto; }
+.mono { font-family: var(--font-mono); }
+.label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Top bar */
+.top {
+  display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: center;
+  padding: 20px 0; border-bottom: 1px solid var(--line);
+}
+.top .who { font-family: var(--font-display); font-weight: 600; font-size: 18px; }
+.top nav { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 14px; }
+.top nav a { color: var(--muted); text-decoration: none; }
+.top nav a:hover { color: var(--accent); }
+
+/* Hero */
+.hero { padding: 64px 0 48px; display: grid; gap: 28px; }
+.hero h1 { font-size: clamp(44px, 9vw, 92px); font-weight: 700; letter-spacing: -0.03em; }
+.hero .lede { max-width: 640px; font-size: clamp(18px, 2.4vw, 22px); line-height: 1.5; color: var(--fg); }
+.hero .status {
+  display: inline-flex; align-items: center; gap: 10px; width: fit-content; max-width: 100%;
+  padding: 6px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
+  font-size: 14px; color: var(--muted);
+}
+.hero .status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+.hero .links { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 8px;
+  font: 500 15px var(--font-body); text-decoration: none; border: 1px solid var(--line);
+  background: var(--surface); color: var(--fg); cursor: pointer;
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn.primary:hover { color: var(--on-accent); filter: brightness(1.08); }
+
+/* Sections */
+section { padding: 56px 0; border-top: 1px solid var(--line); }
+.sec-head { display: grid; gap: 8px; margin-bottom: 32px; }
+.sec-head h2 { font-size: clamp(28px, 4.5vw, 40px); font-weight: 600; letter-spacing: -0.02em; }
+.sec-head p { max-width: 620px; color: var(--muted); }
+
+/* Range strip */
+.range { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface); }
+.range > div { padding: 24px; display: grid; gap: 10px; align-content: start; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); margin: 0 -1px -1px 0; }
+.range h3 { font-size: 22px; font-weight: 600; }
+.range p { font-size: 15px; color: var(--muted); }
+.range .evidence { font-family: var(--font-mono); font-size: 12.5px; color: var(--accent); }
+
+/* About */
+.about { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 40px; }
+.about p + p { margin-top: 16px; }
+.about .facts { display: grid; gap: 14px; align-content: start; }
+.fact { display: grid; gap: 2px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.fact:last-child { border-bottom: 0; }
+.fact b { font-family: var(--font-display); font-size: 20px; font-weight: 600; }
+.fact span { font-size: 14px; color: var(--muted); }
+
+/* Filter */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.chip {
+  padding: 7px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+  color: var(--muted); font: 500 14px var(--font-body); cursor: pointer;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+/* Projects */
+.projects { display: grid; gap: 20px; }
+.project {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 28px;
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px;
+}
+.project .meta { display: flex; flex-wrap: wrap; gap: 6px 12px; margin-bottom: 10px; }
+.project h3 { font-size: clamp(22px, 3vw, 28px); font-weight: 600; letter-spacing: -0.01em; margin-bottom: 12px; }
+.project p { color: var(--muted); }
+.project p + p { margin-top: 10px; }
+.project .mine { color: var(--fg); }
+.project .mine b { font-weight: 600; }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; list-style: none; padding: 0; }
+.stack li { font-family: var(--font-mono); font-size: 12px; padding: 3px 9px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); }
+.project .side { display: grid; gap: 16px; align-content: start; min-width: 0; }
+.project .side a.out { font-size: 14px; font-weight: 500; }
+.stat { display: grid; gap: 2px; }
+.stat b { font-family: var(--font-display); font-size: 34px; font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; }
+.stat span { font-size: 13.5px; color: var(--muted); }
+.bars { display: grid; gap: 10px; padding: 16px; border: 1px solid var(--line); border-radius: 10px; }
+.bar-row { display: grid; grid-template-columns: 92px minmax(0, 1fr) 44px; align-items: center; gap: 10px; font-size: 13px; }
+.bar-row .track { height: 12px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.bar-row .fill { display: block; height: 100%; background: var(--bar-base); border-radius: 3px; }
+.bar-row.win .fill { background: var(--accent); }
+.bar-row .val { font-family: var(--font-mono); text-align: right; }
+.bars .note { font-size: 12px; color: var(--muted); }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+.skill { border-top: 2px solid var(--fg); padding-top: 14px; display: grid; gap: 8px; align-content: start; }
+.skill h3 { font-size: 18px; font-weight: 600; }
+.skill ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 15px; }
+.skill.light { border-top-color: var(--line); }
+.skill.light h3 { color: var(--muted); }
+
+/* Community */
+.roles { display: grid; gap: 0; }
+.role { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 8px 32px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.role:first-child { padding-top: 0; }
+.role:last-child { border-bottom: 0; padding-bottom: 0; }
+.role h3 { font-size: 21px; font-weight: 600; margin-bottom: 4px; }
+.role p { color: var(--muted); max-width: 640px; }
+
+/* Education */
+.edu { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 40px; }
+.edu .main h3 { font-size: 24px; font-weight: 600; margin: 6px 0 4px; }
+.edu .main p { color: var(--muted); }
+.courses { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.courses li { font-size: 14px; padding: 4px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+.school { padding: 14px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.school:first-child { padding-top: 0; }
+.school:last-child { border-bottom: 0; }
+.school span:last-child { font-family: var(--font-mono); font-size: 14px; color: var(--muted); }
+
+/* Contact */
+.contact { display: grid; gap: 28px; }
+.contact h2 { font-size: clamp(32px, 6vw, 56px); font-weight: 700; letter-spacing: -0.03em; max-width: 14ch; }
+.mailrow { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.mailrow code { font-family: var(--font-mono); font-size: 16px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); overflow-wrap: anywhere; user-select: all; }
+footer { padding: 28px 0 40px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+@media (max-width: 760px) {
+  .hero { padding: 40px 0 32px; }
+  .about, .edu, .project { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .project { padding: 20px; }
+  .role { grid-template-columns: minmax(0, 1fr); }
+  section { padding: 40px 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition: none !important; } }
+html { scroll-behavior: smooth; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="top">
+    <span class="who">Raiyan Hossain Khan</span>
+    <nav aria-label="Sections">
+      <a href="#range">Range</a>
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#community">Leadership</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <span class="status">Open to graduate roles in Bangladesh and abroad</span>
+      <h1>Raiyan Hossain Khan</h1>
+      <p class="lede">Computer science graduate from BRAC University. I build full-stack apps, analyze messy data, work on language and speech models, and lead small teams. Based in Dhaka.</p>
+      <div class="links">
+        <a class="btn primary" href="#work">See my work</a>
+        <a class="btn" href="https://github.com/ryanwithabeanie" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/raiyan-khan-215854336" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+
+    <section id="range">
+      <div class="sec-head">
+        <span class="label">Range</span>
+        <h2>Four things I do, each with proof</h2>
+        <p>Roles differ, so here is the short version of what I bring, and where to check it.</p>
+      </div>
+      <div class="range">
+        <div>
+          <h3>Build</h3>
+          <p>Full-stack web apps from database model to deployed interface, with real-time features and AI calls.</p>
+          <span class="evidence">CashCompass, PetConnect</span>
+        </div>
+        <div>
+          <h3>Analyze</h3>
+          <p>Cleaning raw data, finding what could mislead a model, and setting baselines before modelling.</p>
+          <span class="evidence">Cycle length analysis</span>
+        </div>
+        <div>
+          <h3>Research</h3>
+          <p>Language and speech systems, measured with proper metrics on held-out data.</p>
+          <span class="evidence">Undergraduate thesis</span>
+        </div>
+        <div>
+          <h3>Lead</h3>
+          <p>Planning weekly work, reviewing others' output, and keeping supervisors informed. Teaching on the side.</p>
+          <span class="evidence">Thesis team lead, tutoring</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="about">
+        <div>
+          <div class="sec-head">
+            <span class="label">About</span>
+            <h2>Engineer by training, teacher by habit</h2>
+          </div>
+          <p>I finished my B.Sc. in Computer Science and Engineering at BRAC University in Summer 2026. My coursework ran from databases and algorithms to artificial intelligence, computer vision and microeconomics, and my projects follow the same spread.</p>
+          <p>I like work where the result can be checked: a latency in seconds, a score on held-out data, a deployed page that logs people in. I have also tutored students since 2022, which taught me to explain a hard idea in several different ways.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><b>3.59 / 4.00</b><span>CGPA, B.Sc. in CSE, BRAC University</span></div>
+          <div class="fact"><b>Team of 5</b><span>Led through an undergraduate thesis, defended</span></div>
+          <div class="fact"><b>4 years</b><span>Tutoring students from Grade 4 to O-level</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="sec-head">
+        <span class="label">Selected work</span>
+        <h2>Projects</h2>
+        <p>Four projects across AI, web and data. Filter by area.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter projects">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-filter="ai" aria-pressed="false">AI and research</button>
+        <button class="chip" type="button" data-filter="web" aria-pressed="false">Full-stack</button>
+        <button class="chip" type="button" data-filter="data" aria-pressed="false">Data</button>
+      </div>
+
+      <div class="projects">
+
+        <article class="project" data-tags="ai">
+          <div>
+            <div class="meta label"><span>Undergraduate thesis</span><span>Team lead of 5</span><span>Defended</span></div>
+            <h3>Bidirectional Deaf-Blind Communication System</h3>
+            <p>A system that lets Deaf and blind people talk to each other without an interpreter. Speech is converted into sign output, and signs are converted back into speech. Supervised by Dr. Aniqua Nusrat Zereen at BRAC University.</p>
+            <p class="mine"><b>My part:</b> I led the team, built the rule-based NLP stage of the Voice-to-Sign pipeline that feeds the T5 model, and ran the evaluation.</p>
+            <ul class="stack"><li>Python</li><li>Whisper</li><li>Hybrid T5-base</li><li>MediaPipe</li><li>GRU</li></ul>
+          </div>
+          <div class="side">
+            <div class="bars" role="img" aria-label="Mean corpus BLEU-4 on held-out NCSLGR data: hybrid T5 29.87, neural-only T5-base 24.54">
+              <span class="label">Mean corpus BLEU-4, held-out NCSLGR</span>
+              <div class="bar-row win"><span>Hybrid T5</span><span class="track"><span class="fill" style="width:93.3%"></span></span><span class="val">29.87</span></div>
+              <div class="bar-row"><span>T5-base only</span><span class="track"><span class="fill" style="width:76.7%"></span></span><span class="val">24.54</span></div>
+              <span class="note">Bars start at zero. The hybrid is 5.33 points higher.</span>
+            </div>
+            <div class="stat"><b>2.05 s</b><span>mean end-to-end latency, final Voice-to-Sign setup</span></div>
+            <div class="stat"><b>73.80%</b><span>top-1 accuracy of the team's sign recognizer on 250 isolated signs (team result)</span></div>
+          </div>
+        </article>
+
+        <article class="project" data-tags="web ai">
+          <div>
+            <div class="meta label"><span>Course project, CSE470</span><span>Solo</span></div>
+            <h3>CashCompass</h3>
+            <p>A personal finance tracker that writes a weekly summary of your spending using a language model. It also has budgets, a weekly planner, a calendar view, and a friends system with chat.</p>
+            <p class="mine"><b>My part:</b> everything. Frontend, REST API, database models and the AI integration, across 68 commits.</p>
+            <ul class="stack"><li>React</li><li>Node.js</li><li>Express</li><li>MongoDB</li><li>JWT</li><li>Chart.js</li><li>OpenRouter (DeepSeek V3)</li></ul>
+          </div>
+          <div class="side">
+            <a class="out" href="https://github.com/ryanwithabeanie/CashCompass" target="_blank" rel="noopener">View code on GitHub</a>
+            <div class="stat"><b>68 commits</b><span>all mine, from frontend to AI integration</span></div>
+          </div>
+        </article>
+
+        <article class="project" data-tags="web">
+          <div>
+            <div class="meta label"><span>Course project, CSE470</span><span>Team of 3</span></div>
+            <h3>PetConnect</h3>
+            <p>A platform for pet services: a vet directory with appointments, groomer booking with live tracking and subscriptions, emergency rescue reporting, and a pet product shop.</p>
+            <p class="mine"><b>My part:</b> I rebuilt the groomer pages (directory, booking, live tracking, subscriptions) to match the Figma design system, and set up deployment: API base URL, CORS, <span class="mono">vercel.json</span> and a deployment guide. I also fixed login after the production release.</p>
+            <ul class="stack"><li>React</li><li>Tailwind CSS</li><li>Node.js</li><li>Express</li><li>MongoDB</li><li>Socket.io</li><li>Vercel</li></ul>
+          </div>
+          <div class="side">
+            <a class="out" href="https://github.com/sayeedmini/PetConnect" target="_blank" rel="noopener">View code on GitHub</a>
+            <div class="stat"><b>4 areas</b><span>vets, grooming, rescue and shop, in one app</span></div>
+          </div>
+        </article>
+
+        <article class="project" data-tags="data ai">
+          <div>
+            <div class="meta label"><span>Ongoing</span><span>Solo</span></div>
+            <h3>Menstrual Cycle Length Analysis</h3>
+            <p>Exploratory analysis of a public fertility dataset from the Marquette NFP study, done before any modelling. The goal is to know what a prediction model can honestly learn.</p>
+            <p class="mine"><b>What I found:</b> cycles from the same woman are not independent, so a model must be tested on women it has not seen. Some columns are calculated from the same cycle and would leak the answer. About 48% of the variation in cycle length is a stable difference between women.</p>
+            <ul class="stack"><li>Python</li><li>pandas</li><li>matplotlib</li><li>Google Colab</li></ul>
+          </div>
+          <div class="side">
+            <a class="out" href="https://colab.research.google.com/drive/1IGRKhksTVHvLpLeugzYp5DcAIdhz1C3G?usp=sharing" target="_blank" rel="noopener">Open the Colab notebook</a>
+            <div class="stat"><b>1,653</b><span>cycles from 159 women after removing duplicates</span></div>
+            <div class="stat"><b>2.8 days</b><span>error of guessing "same as her last cycle", the number a model has to beat</span></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="sec-head">
+        <span class="label">Skills</span>
+        <h2>What I work with</h2>
+      </div>
+      <div class="skills">
+        <div class="skill"><h3>Languages</h3><ul><li>Python</li><li>JavaScript</li></ul></div>
+        <div class="skill"><h3>Web</h3><ul><li>React</li><li>Node.js</li><li>Express</li><li>REST APIs</li><li>Tailwind CSS</li><li>Socket.io</li><li>JWT</li></ul></div>
+        <div class="skill"><h3>Data and databases</h3><ul><li>MongoDB Atlas</li><li>NumPy</li><li>pandas</li><li>matplotlib</li><li>Google Colab</li></ul></div>
+        <div class="skill"><h3>AI and ML</h3><ul><li>Hugging Face</li><li>MediaPipe</li><li>Whisper</li></ul></div>
+        <div class="skill"><h3>Tools</h3><ul><li>Git and GitHub</li><li>Postman</li><li>Vercel</li></ul></div>
+        <div class="skill"><h3>Working knowledge</h3><ul><li>SQL</li><li>Excel</li><li>PowerPoint</li><li>Canva</li><li>Figma</li><li>C++</li><li>TensorFlow</li></ul></div>
+        <div class="skill"><h3>Soft skills</h3><ul><li>Public speaking</li><li>Leadership</li><li>Interpersonal communication</li><li>Problem solving</li><li>Teamwork</li><li>Task delegation</li><li>Workflow management</li></ul></div>
+      </div>
+    </section>
+
+    <section id="community">
+      <div class="sec-head">
+        <span class="label">Leadership and community</span>
+        <h2>Beyond the code</h2>
+      </div>
+      <div class="roles">
+        <div class="role">
+          <span class="label">Undergraduate thesis</span>
+          <div>
+            <h3>Team lead, five-member thesis team</h3>
+            <p>Split the work into weekly tasks, collected weekly updates, reviewed teammates' output, and reported progress to two supervisors. Set up meetings whenever the team needed guidance.</p>
+          </div>
+        </div>
+        <div class="role">
+          <span class="label">2022 to present</span>
+          <div>
+            <h3>Independent tutor</h3>
+            <p>About 11 students from Grade 4 to O-level and SSC. Started as a hobby in 2022 and still going.</p>
+          </div>
+        </div>
+        <div class="role">
+          <span class="label">Summer 2023</span>
+          <div>
+            <h3>Project Shohojatri, BRAC University</h3>
+            <p>A civic engagement initiative of the School of General Education. I gave an interactive lecture on parenting to parents at a rural school in Savar, documented the session on video, and received a certificate of completion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="sec-head">
+        <span class="label">Education</span>
+        <h2>Where I studied</h2>
+      </div>
+      <div class="edu">
+        <div class="main">
+          <span class="label">Fall 2022 to Summer 2026</span>
+          <h3>B.Sc. in Computer Science and Engineering</h3>
+          <p>BRAC University, Dhaka. CGPA 3.59 out of 4.00.</p>
+          <ul class="courses">
+            <li>Data Structures and Algorithms</li>
+            <li>Database Systems</li>
+            <li>Artificial Intelligence</li>
+            <li>Computer Vision: Fundamentals</li>
+            <li>System Analysis and Design</li>
+            <li>Data Communications</li>
+            <li>Introduction to Microeconomics</li>
+            <li>Business: Basics, Ethics and Environment</li>
+          </ul>
+        </div>
+        <div>
+          <div class="school"><span>Adamjee Cantonment College<br><span class="label">HSC</span></span><span>GPA 5.00 / 5.00</span></div>
+          <div class="school"><span>BAF Shaheen College<br><span class="label">SSC</span></span><span>GPA 5.00 / 5.00</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <span class="label">Contact</span>
+        <h2>Let's talk about the role.</h2>
+        <div class="mailrow">
+          <code id="email">raiyanhossainkhan123@gmail.com</code>
+          <button class="btn" type="button" id="copy">Copy email</button>
+          <span id="copied" class="label" role="status" aria-live="polite"></span>
+        </div>
+        <div class="links">
+          <a class="btn" href="https://www.linkedin.com/in/raiyan-khan-215854336" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/ryanwithabeanie" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://orcid.org/0009-0003-5113-4703" target="_blank" rel="noopener">ORCID 0009-0003-5113-4703</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Raiyan Hossain Khan, Dhaka, Bangladesh</span>
+    <span>References and a full CV are available on request.</span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var chips = document.querySelectorAll('.chip');
+  var cards = document.querySelectorAll('.project');
+  function apply(filter) {
+    chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c.dataset.filter === filter)); });
+    cards.forEach(function (card) {
+      var tags = card.dataset.tags.split(' ');
+      card.hidden = !(filter === 'all' || tags.indexOf(filter) !== -1);
+    });
+  }
+  chips.forEach(function (c) { c.addEventListener('click', function () { apply(c.dataset.filter); }); });
+
+  var copyBtn = document.getElementById('copy');
+  var note = document.getElementById('copied');
+  var mail = document.getElementById('email');
+  copyBtn.addEventListener('click', function () {
+    var text = mail.textContent;
+    function selectIt() {
+      var r = document.createRange(); r.selectNodeContents(mail);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      note.textContent = 'Selected. Press copy.';
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () { note.textContent = 'Copied'; }, selectIt);
+    } catch (e) { selectIt(); }
+  });
+})();
+</script>
+
+</body>
+</html>
